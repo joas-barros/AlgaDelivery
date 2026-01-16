@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum DeliveryStatus {
-    DRAFTED,
-    WAITING_FOR_COURIER(DRAFTED),
+    DRAFT,
+    WAITING_FOR_COURIER(DRAFT),
     IN_TRANSIT(WAITING_FOR_COURIER),
-    DELIVERY(IN_TRANSIT);
+    DELIVERED(IN_TRANSIT);
 
     private final List<DeliveryStatus> previousStatuses;
 
