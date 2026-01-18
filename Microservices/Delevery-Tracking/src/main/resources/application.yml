@@ -16,3 +16,11 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         spring.json.type.mapping: delivery-placed-event:com.algaworks.algadelivery.delevery.tracking.domain.event.DeliveryPlacedEvent,delivery-picked-up-event:com.algaworks.algadelivery.delevery.tracking.domain.event.DeliveryPickUpEvent,delivery-fulfilled-event:com.algaworks.algadelivery.delevery.tracking.domain.event.DeliveryFulfilledEvent
+
+eureka:
+  client:
+    server-url:
+      default-zone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${random.value}
+    prefer-ip-address: true
