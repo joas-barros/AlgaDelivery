@@ -24,3 +24,18 @@ eureka:
   instance:
     instance-id: ${random.value}
     prefer-ip-address: true
+
+resilience4j:
+  retry:
+    configs:
+        default:
+            max-attempts: 3
+            wait-duration: 500ms
+        instances:
+          Retry_CourierAPIClient_payoutCalculation:
+            base-config: default
+            max-attempts: 5
+            retry-exceptions:
+              - org.springframework.web.client.ResourceAccessException
+            ignore-exceptions:
+              - org.springframework.web.client.HttpServerErrorException
