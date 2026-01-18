@@ -66,8 +66,8 @@ public class CourierController {
         log.info("Payout calculation requested for distance: {} km",
                 input.getDistanceInKm());
 
-        if (Math.random() < 0.1) {
-            log.warn("Falha aleatoria na simulação de cálculo de taxa de entrega");
+        if (Math.random() < 0.5) {
+            log.info("Falha aleatoria na simulação de cálculo de taxa de entrega");
             throw new RuntimeException();
         }
 
