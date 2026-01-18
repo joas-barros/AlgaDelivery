@@ -133,6 +133,10 @@ Base URL: `http://localhost:9999`
 
 ---
 
+## 👥 Credits
+
+* **AlgaWorks** - *Educational Content & Inspiration* ([Youtube Channel](https://www.youtube.com/@algaworks))
+
 ## 📝 License
 
 This project is licensed under the MIT License.
