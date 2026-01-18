@@ -1,5 +1,6 @@
-package com.algaworks.algadelivery.delevery.tracking.infrastructure.http.client.resilience4j;
+package com.algaworks.algadelivery.delevery.tracking.infrastructure.resilience4j;
 
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.core.registry.EntryAddedEvent;
 import io.github.resilience4j.core.registry.EntryRemovedEvent;
 import io.github.resilience4j.core.registry.EntryReplacedEvent;
@@ -10,24 +11,24 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class Resilience4jRetryEventConsumer implements RegistryEventConsumer<Retry> {
+public class Resilience4jCircuitBreakerEventConsumer implements RegistryEventConsumer<CircuitBreaker> {
     @Override
-    public void onEntryAddedEvent(EntryAddedEvent<Retry> entryAddedEvent) {
+    public void onEntryAddedEvent(EntryAddedEvent<CircuitBreaker> entryAddedEvent) {
         entryAddedEvent.getAddedEntry().getEventPublisher()
                 .onEvent(event -> {
-                    log.info("Resilience4j Retry '{}' - Event: {}",
+                    log.info("Resilience4j Circuit Break '{}' - Event: {}",
                             entryAddedEvent.getAddedEntry().getName(),
                             event.toString());
                 });
     }
 
     @Override
-    public void onEntryRemovedEvent(EntryRemovedEvent<Retry> entryRemoveEvent) {
+    public void onEntryRemovedEvent(EntryRemovedEvent<CircuitBreaker> entryRemoveEvent) {
 
     }
 
     @Override
-    public void onEntryReplacedEvent(EntryReplacedEvent<Retry> entryReplacedEvent) {
+    public void onEntryReplacedEvent(EntryReplacedEvent<CircuitBreaker> entryReplacedEvent) {
 
     }
 }
